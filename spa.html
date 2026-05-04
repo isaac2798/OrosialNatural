@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orosi al Natural Spa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+html, body{ margin:0; padding:0; height:100%; }
+
+body{ font-family:'Montserrat',sans-serif; display:flex; flex-direction:column; min-height:100vh; }
+
+/* HEADER */
+.spa-header{
+  background:#ffffff;
+  text-align:center;
+  padding:25px 20px 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.spa-logo img{
+  width:100%;
+  max-width:400px;
+  height:auto;
+  margin-bottom:30px;
+}
+
+/* Ajuste para celulares */
+@media(max-width:768px){
+  .spa-logo img{
+    max-width:350px;
+  }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media(max-width:480px){
+  .spa-logo img{
+    max-width:230px;
+  }
+}
+
+.spa-nav{ display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+
+.spa-nav button{
+  padding:10px 25px;
+  border-radius:30px;
+  border:2px solid #c6d46b;
+  background:transparent;
+  color:#1f1f1f;
+  font-weight:600;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.spa-nav button:hover{
+  background:#c6d46b;
+  color:rgb(245,240,230);
+  transform:translateY(-2px);
+}
+
+/* IMAGEN DEBAJO DE UBICACIÓN */
+.spa-ubicacion-img{
+  margin-top:15px;
+}
+
+.spa-ubicacion-img img{
+  max-width:300px;
+  width:300%;
+  height:auto;
+  opacity:0.9;
+  transition:.3s;
+}
+
+.spa-ubicacion-img img:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* GALERÍA */
+.spa-gallery{
+  padding:60px 20px;
+  background:rgb(245,240,230);
+}
+
+.spa-gallery h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin-bottom:40px;
+  color:rgb(45,80,60);
+}
+
+.gallery-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:.4s ease;
+}
+
+.gallery-grid img:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER CENTRADO */
+.spa-footer{
+  background:rgb(95,120,100);
+  color:#ffffff;
+  padding:35px 20px 15px;
+  margin-top:auto;
+  text-align:center;
+}
+
+.spa-footer-container{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:25px;
+  justify-items:center; /* centra cada columna */
+}
+
+.spa-section{
+  text-align:center;
+}
+
+.spa-section h2{ 
+  font-size:17px; 
+  margin-bottom:10px; 
+  color:#c6d46b; 
+}
+
+.spa-section p, 
+.spa-section li, 
+.spa-section a{
+  font-size:13px; 
+  line-height:1.5; 
+  color:#dddddd; 
+  text-decoration:none;
+  margin-bottom:6px;
+}
+
+.spa-section ul{ 
+  list-style:none; 
+  padding:0; 
+  margin:0;
+}
+
+.spa-section a:hover{ color:#ffffff; }
+
+.spa-social{ 
+  text-align:center; 
+  margin-top:20px;
+}
+
+.spa-social a{ 
+  color:#bbbbbb; 
+  font-size:20px; 
+  margin:0 10px;
+  transition:.3s; 
+}
+
+.spa-social a:hover{ 
+  color:rgb(180,120,90); 
+  transform:scale(1.2); 
+}
+
+.spa-copy{
+  text-align:center;
+  border-top:1px solid #444;
+  padding-top:12px;
+  margin-top:15px;
+  font-size:12px;
+  color:#aaaaaa;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .spa-footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+/* SERVICIOS SPA */
+.spa-servicios{
+padding:60px 20px;
+background:#ffffff;
+}
+
+.spa-servicios h2{
+text-align:center;
+font-family:'Playfair Display',serif;
+font-size:32px;
+margin-bottom:30px;
+color:rgb(45,80,60);
+}
+
+.filtros-servicios{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:30px;
+}
+
+.filtros-servicios button{
+padding:8px 20px;
+border-radius:20px;
+border:2px solid #c6d46b;
+background:white;
+cursor:pointer;
+font-weight:600;
+}
+
+.servicios-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.servicio-card{
+background:rgb(245,240,230);
+padding:20px;
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+.ver-mas{
+margin-top:10px;
+padding:6px 12px;
+border:none;
+background:#c6d46b;
+color:#1f1f1f;
+border-radius:6px;
+cursor:pointer;
+}
+
+.info-extra{
+display:none;
+margin-top:10px;
+font-size:14px;
+}
+
+.servicio-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="spa-header">
+  <div class="spa-logo">
+    <img src="imagenes/orosi_logo_edit.png" alt="Orosi al Natural">
+  </div>
+  <nav class="spa-nav">
+    <a href="index.html"><button>INICIO</button></a>
+    <a href="spa.html"><button>SPA</button></a>
+    <a href="hotel.html"><button>HOTEL</button></a>
+    <a href="restaurante.html"><button>RESTAURANTE</button></a>
+  </nav>
+</header>
+
+</section>
+
+<!-- SERVICIOS SPA CON FILTROS -->
+<section class="spa-servicios">
+
+<h2>Servicios del Spa</h2>
+
+<div class="filtros-servicios">
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('individual')">Individual</button>
+<button onclick="filtrar('pareja')">Pareja</button>
+<button onclick="filtrar('grupo')">Grupo</button>
+<button onclick="filtrar('facial')">Facial</button>
+<button onclick="filtrar('masaje')">Masaje</button>
+</div>
+
+<div class="servicios-grid">
+
+<!-- INTRO -->
+<div class="servicio-card individual">
+
+  <img src="imagenes/Imagenes_del_spa/Yoga/imagen1.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Experiencias de Bienestar</h3>
+<p>En Spa Orosi al Natural creamos experiencias de bienestar que combinan técnicas profesionales con el poder de lo natural.</p>
+<div class="info-extra">
+Nuestro objetivo es ayudarte a desconectar del estrés diario y renovar tu energía en un ambiente tranquilo, cálido y armonioso.
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<!-- PAQUETES INDIVIDUALES -->
+
+<div class="servicio-card individual">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/entrada2.jpeg" alt="Entrada General" class="servicio-img">
+
+  <h3>Entrada General</h3>
+  <p>Circuito spa y relajación.</p>
+
+  <div class="info-extra">
+    Coctel Natural de Bienvenida<br>
+    Casillero equipado con bata y toalla<br>
+    Uso de circuito guiado (sauna, vapor, hidromasaje)<br>
+    Uso de piscina<br>
+    Plato de frutas<br><br>
+    Valor: ₡28.250 por persona
+  </div>
+
+  <button class="ver-mas">Ver más</button>
+
+</div>
+
+
+<div class="servicio-card individual">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/diaSpa2.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Día de Spa</h3>
+<p>Relajación completa con consumo en restaurante.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Casillero equipado con bata y toalla<br>
+Uso de circuito guiado (sauna, vapor, hidromasaje)<br>
+Uso de piscina<br>
+Plato de frutas<br>
+₡20.000 de consumo en restaurante<br><br>
+Valor: ₡42.600 por persona
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card individual">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/heliconias.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Heliconias del Valle</h3>
+<p>Experiencia completa con tratamiento.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Casillero equipado con bata y toalla<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Copa de vino<br>
+Tratamiento a escoger: masaje, exfoliación, envoltura o facial<br><br>
+Valor: ₡50.850 por persona
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card individual">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/pasionCafe.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Pasión Café</h3>
+<p>Experiencia inspirada en el café.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Exfoliación de café<br>
+Masaje relajante aroma café (45 min)<br>
+Facial hidratante revitalizante<br><br>
+Valor: ₡84.750 por persona
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<!-- PAREJAS -->
+
+<div class="servicio-card pareja">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/pareja.png" alt="Entrada General" class="servicio-img">
+
+<h3>Momento en Pareja</h3>
+<p>Experiencia romántica.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Botella de vino<br>
+Masaje relajante en pareja<br><br>
+Valor: ₡103.960 por pareja
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card pareja">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/fusionTropi.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Fusión Tropical</h3>
+<p>Experiencia tropical relajante.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Vino espumante<br>
+Masaje con aceite de mango (60 min)<br>
+Exfoliación de coco<br>
+Mascarilla facial hidratante<br><br>
+Valor: ₡124.300 por pareja
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card pareja">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/chocolateTerap.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Chocolaterapia</h3>
+<p>Ritual sensorial de chocolate.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Copa de vino<br>
+Masaje con aceite de chocolate<br>
+Envoltura de chocolate<br><br>
+Valor: ₡113.000 por pareja
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<!-- GRUPOS -->
+
+<div class="servicio-card grupo">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/spaAmigas2.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Spa con Amigas</h3>
+<p>Para grupos de 3 a 5 personas.</p>
+<div class="info-extra">
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
+Plato de frutas<br>
+Botella de vino (cada 3 personas)<br>
+Tabla de fiambres<br>
+Masaje relajante<br><br>
+Valor: ₡39.550 por persona
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card grupo">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/paquetesPerson.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Paquetes Personalizados</h3>
+<p>Experiencias diseñadas para grupos.</p>
+<div class="info-extra">
+Creamos paquetes personalizados según el presupuesto y necesidades del grupo, cuidando cada detalle para brindar una experiencia única y relajante.
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<!-- FACIALES -->
+
+<div class="servicio-card facial">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/facialProfun.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Facial Profundo Purificante</h3>
+<p>Limpieza facial intensiva.</p>
+<div class="info-extra">
+Exfoliación profunda<br>
+Extracción de impurezas<br>
+Vacumterapia<br>
+Mascarilla específica<br>
+Masaje facial revitalizante<br>
+Protector solar final<br><br>
+Valor: ₡33.900
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card facial">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/fascialHidrat.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Facial Hidratante Revitalizante</h3>
+<p>Hidratación profunda.</p>
+<div class="info-extra">
+Limpieza suave<br>
+Exfoliación delicada<br>
+Mascarilla nutritiva<br>
+Masaje facial relajante<br>
+Protector solar final<br><br>
+Valor: ₡28.250
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<!-- MASAJES -->
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/masajeRelajan.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Masaje Relajante</h3>
+<p>Técnica suave para liberar estrés.</p>
+<div class="info-extra">
+45 min: ₡28.250<br>
+60 min: ₡33.900<br>
+90 min: ₡39.550
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/masajeDescontrac.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Masaje Descontracturante</h3>
+<p>Libera tensiones musculares.</p>
+<div class="info-extra">
+45 min: ₡28.250<br>
+60 min: ₡33.900<br>
+90 min: ₡39.550
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/piedrasCalien.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Piedras Calientes</h3>
+<p>Calor terapéutico profundo.</p>
+<div class="info-extra">
+60 min: ₡33.900
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/Bambú C.JPG.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Masaje con Bambú</h3>
+<p>Técnica que ayuda a relajar músculos y mejorar la circulación.</p>
+<div class="info-extra">
+45 min: ₡28.250<br>
+60 min: ₡33.900<br>
+90 min: ₡39.550
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/velasAromat.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Velas Aromáticas</h3>
+<p>Experiencia sensorial profundamente relajante que combina técnicas de masaje suave</p>
+<div class="info-extra">
+<p>Ayuda a aliviar tensiones, nutrir la piel y promover un estado de bienestar integral.</p>
+45 min: ₡33.900<br>
+60 min: ₡39.550
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+<!-- Poner la informacion correcta -->
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Yoga/yoga3.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Yoga</h3>
+<p>Cada mes ofrecemos sesiones de yoga en un entorno natural, diseñadas para equilibrar cuerpo, mente y respiración.</p>
+<div class="info-extra">
+  <p>Una experiencia ideal para liberar tensiones y reconectar contigo.</p>
+
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/Envoltura corpo.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Envolturas Corporales</h3>
+<p>Envolturas Corporales como: </p>
+<p>Chocolate, Café y Coco.</p>
+<div class="info-extra">
+  ₡28.250<br>
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/Exfoliación Corpo.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Exfoliaciones Corporales</h3>
+<p>Exfoliaciones Corporales como: </p>
+<p>Café, Azúcar y limón y	Coco y sal marina.</p>
+<div class="info-extra">
+  ₡28.250<br>
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+<div class="servicio-card masaje">
+
+  <img src="imagenes/Imagenes_del_spa/Servicios/PindasAyurved.jpeg" alt="Entrada General" class="servicio-img">
+
+<h3>Pindas Ayurvedicas</h3>
+<p>Ritual herbal caliente que equilibra cuerpo y mente.</p>
+<div class="info-extra">
+45 min: ₡28.250 <br>
+60 min: ₡33.900 <br>
+90 min: ₡39.550
+
+</div>
+<button class="ver-mas">Ver más</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="spa-gallery">
+  <h2>Galería</h2>
+  <div class="gallery-grid">
+    
+    <img src="imagenes/Imagenes_del_spa/imagen1.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen2.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen3.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen4.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen5.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen6.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen7.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen8.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen9.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen10.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen11.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen12.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen13.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen14.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen15.jpeg">
+    <img src="imagenes/Imagenes_del_spa/imagen16.jpeg">
+
+  </div>
+</section>
+
+<footer class="spa-footer">
+  <div class="spa-footer-container">
+    <div class="spa-section">
+      <h2>🌿 Sobre Nosotros</h2>
+      <p>Somos un hotel, spa y restaurante inspirado en la naturaleza y la medicina corporal. Utilizamos cremas, aceites y lociones naturales para brindarte una experiencia de bienestar y relajación.</p>
+    </div>
+    <div class="spa-section">
+      <h2>🕒 Horarios</h2>
+      <ul>
+        <li><strong>Lunes y Martes:</strong> Cerrado</li>
+        <li><strong>Miercoles a Domingo:</strong> 9:00 am – 5:00 pm</li>
+      </ul>
+    </div>
+    <div class="spa-section">
+      <h2>📍 Ubicación</h2>
+      <a href="https://www.google.com/maps/search/?api=1&query=Orosi+al+Natural+Spa,+Carretera+a+Cachi,+3km+de+Palomo+de,+Provincia+de+Cartago,+Orosí,+30203" target="_blank">
+        Orosi al Natural, Palomo carretera a Cachi, Orosí, Cartago
+      </a>
+
+      <!-- IMAGEN AQUÍ -->
+      <div class="spa-ubicacion-img">
+        <img src="imagenes/ICT.png" alt="Decoración">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="spa-social">
+    <a href="https://www.facebook.com/orosialnatural/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/orosialnaturalspa/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/50688726012" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.tiktok.com/@orosialnatural" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <div class="spa-copy">
+    © 2015 Orosi al Natural | Tel: 2533-1616 | Email: informacion@orosialnaturalspa.com
+  </div>
+  <div class="spa-copy">
+    Creado por Isaac Arce
+  </div>
+</footer>
+
+<script>
+
+/* FILTROS */
+
+function filtrar(tipo){
+
+  let servicios=document.querySelectorAll(".servicio-card");
+
+  servicios.forEach(servicio=>{
+
+    if(tipo==="todos"){
+      servicio.style.display="block";
+    }
+    else if(servicio.classList.contains(tipo)){
+      servicio.style.display="block";
+    }
+    else{
+      servicio.style.display="none";
+    }
+
+  });
+
+}
+
+/* BOTON VER MAS */
+
+document.addEventListener("click",function(e){
+
+if(e.target.classList.contains("ver-mas")){
+
+let info=e.target.previousElementSibling;
+
+if(info.style.display==="block"){
+info.style.display="none";
+e.target.textContent="Ver más";
+}
+else{
+info.style.display="block";
+e.target.textContent="Ver menos";
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

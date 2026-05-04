@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orosi al Natural Spa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+html, body{ margin:0; padding:0; height:100%; }
+
+body{ font-family:'Montserrat',sans-serif; display:flex; flex-direction:column; min-height:100vh; }
+
+/* HEADER */
+.spa-header{
+  background:#ffffff;
+  text-align:center;
+  padding:25px 20px 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  position:static;
+  top:0;
+  z-index:1000;
+}
+
+.spa-logo img{
+  width:100%;
+  max-width:400px;
+  height:auto;
+  margin-bottom:30px;
+}
+
+/* Ajuste para celulares */
+@media(max-width:768px){
+  .spa-logo img{
+    max-width:350px;
+  }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media(max-width:480px){
+  .spa-logo img{
+    max-width:230px;
+  }
+}
+
+.spa-nav{ display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+
+.spa-nav button{
+  padding:10px 25px;
+  border-radius:30px;
+  border:2px solid rgb(180,120,90);
+  background:transparent;
+  color:#1f1f1f;
+  font-weight:600;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.spa-nav button:hover{
+  background:rgb(180,120,90);
+  color:#ffffff;
+  transform:translateY(-2px);
+}
+
+/* IMAGEN DEBAJO DE UBICACIÓN */
+.spa-ubicacion-img{
+  margin-top:15px;
+}
+
+.spa-ubicacion-img img{
+  max-width:300px;
+  width:300%;
+  height:auto;
+  opacity:0.9;
+  transition:.3s;
+}
+
+.spa-ubicacion-img img:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* SECCION RESTAURANTE */
+.restaurante-info{
+  max-width:900px;
+  margin:60px auto;
+  padding:0 25px;
+  text-align:center;
+}
+
+.restaurante-info h1{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+.restaurante-info p{
+  line-height:1.8;
+  font-size:16px;
+  color:#444;
+}
+
+#textoExtra{
+  display:none;
+}
+
+.btn-vermas{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:rgb(180,120,90);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn-vermas:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+.spa-footer{
+  background:rgb(180,120,90);
+  color:#ffffff;
+  padding:50px 20px 25px;
+  margin-top:auto;
+  text-align:center;
+}
+
+.spa-footer-container{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:25px;
+  justify-items:center;
+}
+
+.spa-section{ text-align:center; }
+
+.spa-section h2{ font-size:18px; margin-bottom:15px; color:rgb(235,225,210); }
+
+.spa-section p, .spa-section li, .spa-section a{
+  font-size:14px; line-height:1.6; color:#dddddd; text-decoration:none;
+}
+
+.spa-section a:hover{ color:#ffffff; }
+
+.spa-section ul{ list-style:none; padding:0; }
+
+.spa-social{ text-align:center; margin-top:30px; }
+
+.spa-social a{ color:#bbbbbb; font-size:22px; margin:0 15px; transition:.3s; }
+
+.spa-social a:hover{ color:rgb(235,225,210); transform:scale(1.2); }
+
+.spa-copy{
+  text-align:center;
+  border-top:1px solid #444;
+  padding-top:20px;
+  margin-top:25px;
+  font-size:13px;
+  color:#aaaaaa;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .spa-footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+/* MENU */
+.spa-gallery{
+  padding:60px 20px;
+  background:rgb(245,240,230);
+}
+
+.spa-gallery h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin-bottom:40px;
+  color:#2c2c2c;
+}
+
+.gallery-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+/* GALERÍA */
+.spa-gallery{
+  padding:60px 20px;
+  background:rgb(245,240,230);
+}
+
+.spa-gallery h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin-bottom:40px;
+  color:rgb(45,80,60);
+}
+
+.gallery-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:.4s ease;
+}
+
+.gallery-grid img:hover{
+  transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="spa-header">
+  <div class="spa-logo">
+    <img src="imagenes/orosi_logo_edit.png" alt="Orosi al Natural">
+  </div>
+
+  <nav class="spa-nav">
+    <a href="index.html"><button class="nav-button">INICIO</button></a>
+    <a href="spa.html"><button class="nav-button">SPA</button></a>
+    <a href="hotel.html"><button class="nav-button">HOTEL</button></a>
+    <a href="restaurante.html"><button class="nav-button">RESTAURANTE</button></a>
+  </nav>
+</header>
+
+<section class="spa-gallery">
+  <h2>Nuestro Menu</h2>
+  <div class="gallery-grid">
+    <nav class="spa-nav">
+    <a href="menu.html"><button class="nav-button">Ver Menu</button></a>
+  </nav>
+  </div>
+</section>
+
+<section class="spa-gallery">
+  <h2>Galería</h2>
+  <div class="gallery-grid">
+    
+    <img src="imagenes/Imagenes_del_restaurante/imagen1.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen2.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen3.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen4.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen6.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen7.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen8.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen9.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen10.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen11.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen12.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen13.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen14.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen15.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen17.jpeg">
+    <img src="imagenes/Imagenes_del_restaurante/imagen18.jpeg">
+
+  </div>
+</section>
+
+<section class="restaurante-info">
+
+<h1>Orosi al Natural Restaurante</h1>
+
+<p>
+<strong>Reseña – Orosi al Natural Restaurante</strong><br><br>
+
+Orosi al Natural nació como un sueño familiar en la finca de la familia Coto,
+legado de nuestro querido Papi Manuel. En sus inicios llevó el nombre de
+Rancho Don José, un espacio sencillo pero lleno de tradición, donde la
+hospitalidad y el amor por la buena comida eran el corazón de cada encuentro.
+</p>
+
+<span id="textoExtra">
+
+<p>
+Con el paso de los años, el proyecto fue creciendo y transformándose, sin perder
+nunca su esencia. Hace aproximadamente 14 años, Don Minor y Doña Rosa asumieron
+con valentía y dedicación el reto de administrarlo, dándole una nueva etapa bajo
+el nombre Tradiciones Don José.
+</p>
+
+<p>
+Desde entonces, lo han convertido en un lugar familiar y acogedor, donde cada
+detalle refleja el orgullo por nuestras raíces y el deseo de mantener vivas
+nuestras tradiciones.
+</p>
+
+<p>
+Hoy somos <strong>Orosi al Natural Restaurante</strong>, un espacio donde quienes
+nos visitan disfrutan de la naturaleza, la tranquilidad y la buena comida,
+sintiéndose parte de la familia Coto.
+</p>
+
+<h3>Lo que ofrecemos</h3>
+
+<p><strong>Menú a la carta</strong><br>
+Platillos de fusión costarricense que combinan nuestras raíces tradicionales con
+un toque creativo y especial de la casa.</p>
+
+<p><strong>Desayunos tradicionales</strong><br>
+Opciones llenas de sabor para iniciar el día con lo mejor de nuestra cocina.</p>
+
+<p><strong>Tardes de café</strong><br>
+Espacios perfectos para compartir, conversar y disfrutar en un ambiente natural.</p>
+
+<p><strong>Cata de vinos</strong><br>
+Ofrecemos catas de vino, una experiencia sensorial diseñada para disfrutar, aprender y deleitar el paladar.</p>
+
+<p><strong>Eventos privados</strong><br>
+Bodas, Baby showers, Cumpleaños y Eventos corporativos.</p>
+
+<p><strong>Paquetes personalizados</strong><br>
+Diseñamos cada experiencia según el gusto y necesidades de nuestros clientes.</p>
+
+<p><strong>Experiencia en finca y picnic</strong><br>
+Picnics al aire libre, paquetes para parejas, familias o grupos y contacto
+directo con la naturaleza.</p>
+
+<p><strong>Instalaciones</strong><br>
+• Amplias terrazas<br>
+• Hermosos jardines<br>
+• Cancha y campo de juegos para niños<br>
+• Parqueo privado y seguro</p>
+
+</span>
+
+<button class="btn-vermas" onclick="mostrarTexto()" id="botonTexto">Ver más</button>
+
+</section>
+
+
+<footer class="spa-footer">
+  <div class="spa-footer-container">
+    <div class="spa-section">
+      <h2>🌿 Sobre Nosotros</h2>
+      <p>Somos un hotel, spa y restaurante inspirado en la naturaleza y la medicina corporal. Utilizamos cremas, aceites y lociones naturales para brindarte una experiencia de bienestar y relajación.</p>
+    </div>
+
+    <div class="spa-section">
+      <h2>🕒 Horarios</h2>
+      <ul>
+        <li><strong>Lunes y Martes:</strong> Cerrado</li>
+        <li><strong>Miercoles a Domingo:</strong> 9:00 am – 5:00 pm</li>
+      </ul>
+    </div>
+
+    <div class="spa-section">
+      <h2>📍 Ubicación</h2>
+      <a href="https://www.google.com/maps/search/?api=1&query=Orosi+al+Natural+Spa,+Carretera+a+Cachi,+3km+de+Palomo+de,+Provincia+de+Cartago,+Orosí,+30203" target="_blank">
+        Orosi al Natural, Palomo carretera a Cachi, Orosí, Cartago
+      </a>
+
+      <!-- IMAGEN AQUÍ -->
+      <div class="spa-ubicacion-img">
+        <img src="imagenes/ICT.png" alt="Decoración">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="spa-social">
+    <a href="https://www.facebook.com/orosialnatural/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/orosialnaturalspa/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/50686026635" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.tiktok.com/@orosialnatural" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <div class="spa-copy">
+    © 2015 Orosi al Natural | Tel: 2533-1414 | Email: informacion@orosialnaturalspa.com
+  </div>
+
+  <div class="spa-copy">
+    Creado por Isaac Arce
+  </div>
+</footer>
+
+<script>
+function mostrarTexto(){
+  var texto = document.getElementById("textoExtra");
+  var boton = document.getElementById("botonTexto");
+
+  if (window.getComputedStyle(texto).display === "none") {
+      texto.style.display = "inline";
+      boton.innerHTML = "Ver menos";
+  } else {
+      texto.style.display = "none";
+      boton.innerHTML = "Ver más";
+  }
+}
+</script>
+
+</body>
+</html>

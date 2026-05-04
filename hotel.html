@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orosi al Natural Spa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* HEADER */
+.spa-header{
+  background:#ffffff;
+  text-align:center;
+  padding:25px 20px 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  position:static;
+  top:0;
+  z-index:1000;
+}
+
+.spa-logo img{
+  width:100%;
+  max-width:400px;
+  height:auto;
+  margin-bottom:30px;
+}
+
+/* Ajuste para celulares */
+@media(max-width:768px){
+  .spa-logo img{
+    max-width:350px;
+  }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media(max-width:480px){
+  .spa-logo img{
+    max-width:230px;
+  }
+}
+
+/* NAV (botones normales arriba) */
+.spa-nav{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.spa-nav button{
+  padding:10px 25px;
+  border-radius:30px;
+  border:2px solid #c6d46b;
+  background:transparent;
+  color:#1f1f1f;
+  font-weight:600;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.spa-nav button:hover{
+  background:#c6d46b;
+  transform:translateY(-2px);
+}
+
+/* SECCIÓN INFORMACIÓN */
+.spa-info{
+  max-width:900px;
+  margin:60px auto;
+  padding:0 25px;
+  text-align:center;
+}
+
+.spa-info h1{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  margin-bottom:20px;
+  color:#2c2c2c;
+}
+
+.spa-info p{
+  line-height:1.8;
+  font-size:16px;
+  color:#444;
+}
+
+#masTexto{
+  display:none;
+}
+
+.btn-vermas{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:#c6d46b;
+  color:#1f1f1f;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn-vermas:hover{
+  transform:scale(1.05);
+}
+
+/* GALERÍA */
+.spa-gallery{
+  padding:60px 20px;
+  background:rgb(245,240,230);
+}
+
+.spa-gallery h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin-bottom:40px;
+  color:rgb(45,80,60);
+}
+
+.gallery-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+/* TARJETAS DE HABITACIONES */
+.room-card{
+  background:#ffffff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  text-align:center;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.room-card:hover{
+  transform:translateY(-5px);
+}
+
+/* 🔥 CONTROL DEL TAMAÑO DE LA IMAGEN */
+.spa-gallery .room-card img{
+  width:100%;
+  height:160px; /* 👈 cambiá este valor (ej: 120px, 180px, etc) */
+  object-fit:cover;
+}
+
+/* IMAGEN */
+/* SOLO imágenes normales de galería */
+.gallery-grid > img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:.4s ease;
+}
+
+.gallery-grid > img:hover{
+  transform:scale(1.05);
+}
+
+/* BOTÓN DENTRO DE TARJETA */
+.room-card a{
+  text-decoration:none;
+}
+
+.room-card .nav-button{
+  width:80%;
+  margin:15px auto 20px;
+  display:block;
+  padding:10px;
+  border-radius:25px;
+  border:2px solid #c6d46b;
+  background:transparent;
+  color:#1f1f1f;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.room-card .nav-button:hover{
+  background:#c6d46b;
+}
+
+/* FOOTER */
+.spa-footer{
+  background:rgb(95,120,100);
+  color:#ffffff;
+  padding:50px 20px 25px;
+  margin-top:auto;
+  text-align:center;
+}
+
+.spa-footer-container{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:25px;
+  justify-items:center;
+}
+
+.spa-section{
+  text-align:center;
+}
+
+.spa-section h2{
+  font-size:18px;
+  margin-bottom:15px;
+  color:#c6d46b;
+}
+
+.spa-section p,
+.spa-section li,
+.spa-section a{
+  font-size:14px;
+  line-height:1.6;
+  color:#dddddd;
+  text-decoration:none;
+}
+
+.spa-section a:hover{
+  color:#ffffff;
+}
+
+.spa-section ul{
+  list-style:none;
+  padding:0;
+}
+
+/* IMAGEN UBICACIÓN */
+.spa-ubicacion-img{
+  margin-top:15px;
+}
+
+.spa-ubicacion-img img{
+  max-width:300px;
+  width:100%;
+  height:auto;
+  opacity:0.9;
+  transition:.3s;
+}
+
+.spa-ubicacion-img img:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+/* REDES */
+.spa-social{
+  text-align:center;
+  margin-top:30px;
+}
+
+.spa-social a{
+  color:#bbbbbb;
+  font-size:22px;
+  margin:0 15px;
+  transition:.3s;
+}
+
+.spa-social a:hover{
+  color:#c6d46b;
+  transform:scale(1.2);
+}
+
+/* COPYRIGHT */
+.spa-copy{
+  text-align:center;
+  border-top:1px solid #444;
+  padding-top:20px;
+  margin-top:25px;
+  font-size:13px;
+  color:#aaaaaa;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .spa-footer-container{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="spa-header">
+  <div class="spa-logo">
+    <img src="imagenes/orosi_logo_edit.png" alt="Orosi al Natural">
+  </div>
+
+  <nav class="spa-nav">
+    <a href="index.html"><button class="nav-button">INICIO</button></a>
+    <a href="spa.html"><button class="nav-button">SPA</button></a>
+    <a href="hotel.html"><button class="nav-button">HOTEL</button></a>
+    <a href="restaurante.html"><button class="nav-button">RESTAURANTE</button></a>
+  </nav>
+</header>
+
+<section class="spa-gallery">
+  <h2>Nuestras Habitaciones</h2>
+  <div class="gallery-grid">
+
+      <div class="room-card">
+        <img src="imagenes/Imagenes_del_Hospedaje/Casa_de_las_Hortencias/imagen2.jpeg">
+        <a href="hortencias.html">
+          <button class="nav-button">Ver Casa de las Hortencias</button>
+        </a>
+      </div>
+
+      <div class="room-card">
+        <img src="imagenes/Imagenes_del_Hospedaje/Habitación_de_las_Orquideas/imagen8.jpeg" alt="Habitación de las Orquídeas">
+        <a href="orquideas.html">
+          <button class="nav-button">Ver Habitación de las Orquideas</button>
+        </a>
+      </div>
+
+      <div class="room-card">
+        <img src="imagenes/Imagenes_del_Hospedaje/Habitación_de_los_Crotos/imagen5.jpeg" alt="Habitación de los Crotos">
+        <a href="crotos.html">
+          <button class="nav-button">Ver Habitación de los Crotos</button>
+        </a>
+      </div>
+
+      <div class="room-card">
+        <img src="imagenes/Imagenes_del_Hospedaje/Suite_las_Avecillas/imagen4.jpeg" alt="Suite las Avecillas">
+        <a href="avecillas.html">
+          <button class="nav-button">Ver Suite las Avecillas</button>
+        </a>
+      </div>
+
+    </nav>
+
+  </div>
+</section>
+
+<section class="spa-gallery">
+  <h2>Nuestras Instalaciones</h2>
+  <div class="gallery-grid">
+    
+    <img src="imagenes/Imagenes_del_Hospedaje/imagen1.jpeg">
+    <img src="imagenes/Imagenes_del_Hospedaje/imagen2.jpeg">
+    <img src="imagenes/Imagenes_del_Hospedaje/imagen3.jpeg">
+
+  </div>
+</section>
+
+<!-- SECCIÓN INFORMACIÓN -->
+<section class="spa-info">
+
+<h1>Orosi Al Natural Spa</h1>
+
+<p>
+<strong>Orosi Al Natural, donde el descanso se convierte en transformación</strong><br><br>
+
+Bienvenido a tu santuario personal en el corazón de Cartago.
+Imagina despertar entre el susurro de las hojas y el canto de los pájaros, donde el aire puro
+de Orosi se cuela suavemente por tu ventana.
+Nuestros chalets no son simplemente habitaciones: son espacios diseñados para que tu cuerpo respire,
+tu mente se calme y tu espíritu encuentre ese equilibrio que tanto necesitas.
+</p>
+
+<span id="masTexto">
+
+<p>
+<strong>Una experiencia que va más allá del hospedaje</strong><br><br>
+
+Cada chalet ha sido pensado como una extensión natural de nuestro spa, creando un ecosistema
+de bienestar donde todo fluye en armonía.
+
+Despierta y déjate envolver por tratamientos que despiertan tus sentidos: desde el calor
+terapéutico de nuestras piedras volcánicas hasta la purificación ancestral de nuestras
+envolturas de arcilla natural; rincones de lectura bañados por la luz natural y ambientes
+donde el silencio es el mejor acompañante.
+</p>
+
+<p>
+Ya sea que llegues buscando aliviar el estrés de la ciudad, celebrar un momento especial o
+simplemente regalarte una pausa consciente, nuestros chalets son el punto de partida perfecto.
+
+Cada estancia incluye acceso prioritario a nuestros tratamientos estrella:
+bambuterapia para liberar tensiones, masajes con piedras calientes que eliminan toxinas,
+y rituales de belleza que devuelven el brillo natural a tu piel.
+</p>
+
+<p>
+En Orosi al Natural creemos que cuidarte no es un lujo, es una necesidad.
+Nuestros chalets son la invitación a romper con la rutina, a escuchar lo que tu cuerpo te pide
+y a regresar a casa sintiéndote renovado, ligero y en paz.
+</p>
+
+<p><strong>Orosi al Natural, donde la naturaleza, el confort y tu bienestar se encuentran.</strong></p>
+
+</span>
+
+<button class="btn-vermas" onclick="verMas()" id="btnVerMas">Ver más</button>
+
+</section>
+
+<footer class="spa-footer">
+  <div class="spa-footer-container">
+    <div class="spa-section">
+      <h2>🌿 Sobre Nosotros</h2>
+      <p>Somos un hotel, spa y restaurante inspirado en la naturaleza y la medicina corporal. Utilizamos cremas, aceites y lociones naturales para brindarte una experiencia de bienestar y relajación.</p>
+    </div>
+
+    <div class="spa-section">
+      <h2>🕒 Horarios</h2>
+      <ul>
+        <li><strong>Lunes y Martes:</strong> Cerrado</li>
+        <li><strong>Miercoles a Domingo:</strong> 9:00 am – 5:00 pm</li>
+      </ul>
+    </div>
+
+    <div class="spa-section">
+      <h2>📍 Ubicación</h2>
+      <a href="https://www.google.com/maps/search/?api=1&query=Orosi+al+Natural+Spa,+Carretera+a+Cachi,+3km+de+Palomo+de,+Provincia+de+Cartago,+Orosí,+30203" target="_blank">
+        Orosi al Natural, Palomo carretera a Cachi, Orosí, Cartago
+      </a>
+
+      <!-- IMAGEN AQUÍ -->
+      <div class="spa-ubicacion-img">
+        <img src="imagenes/ICT.png" alt="Decoración">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="spa-social">
+    <a href="https://www.facebook.com/orosialnatural/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/orosialnaturalspa/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/50688726012" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.tiktok.com/@orosialnatural" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <div class="spa-copy">
+    © 2015 Orosi al Natural | Tel: 2533-1616 | Email: informacion@orosialnaturalspa.com
+  </div>
+
+  <div class="spa-copy">
+    Creado por Isaac Arce
+  </div>
+</footer>
+
+<script>
+function verMas(){
+  var texto = document.getElementById("masTexto");
+  var boton = document.getElementById("btnVerMas");
+
+  if (window.getComputedStyle(texto).display === "none") {
+      texto.style.display = "block";
+      boton.innerHTML = "Ver menos";
+  } else {
+      texto.style.display = "none";
+      boton.innerHTML = "Ver más";
+  }
+}
+</script>
+
+</body>
+</html>
