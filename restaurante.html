@@ -464,6 +464,23 @@ directo con la naturaleza.</p>
 </footer>
 
 <script>
+/* Botón de reserva */
+document.getElementById('btnReserva').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const mensaje = `Hola, vengo de la página web y me gustaría realizar una reservación.
+
+Nombre:
+Fecha de reservación:
+Paquete seleccionado:
+Número de teléfono:
+Correo electrónico:
+Identificación:`;
+
+    const url = "https://wa.me/50688726012?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
+});
+
 function mostrarTexto(){
   var texto = document.getElementById("textoExtra");
   var boton = document.getElementById("botonTexto");
