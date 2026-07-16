@@ -795,19 +795,22 @@ Valor: ₡28.250
 
 <script>
 
-/*Boton de reserva*/
-document.getElementById('btnReserva').addEventListener('click', function(e){
-      e.preventDefault();
-      const mensaje =
-  `Nombre: 
-  Fecha de reservación: 
-  Paquete seleccionado: 
-  Número de teléfono: 
-  Correo electrónico: 
-  Identificación: `;
-      const url = "https://wa.me/50688726012?text=" + encodeURIComponent(mensaje);
-      window.open(url, "_blank");
-    });
+/* Botón de reserva */
+document.getElementById('btnReserva').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const mensaje = `Hola, vengo de la página web y me gustaría realizar una reservación.
+
+Nombre:
+Fecha de reservación:
+Paquete seleccionado:
+Número de teléfono:
+Correo electrónico:
+Identificación:`;
+
+    const url = "https://wa.me/50688726012?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
+});
 
 /* FILTROS */
 
