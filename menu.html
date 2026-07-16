@@ -175,6 +175,63 @@ body{ font-family:'Montserrat',sans-serif; display:flex; flex-direction:column; 
   color:#aaaaaa;
 }
 
+/*Botón flotante de Reserva*/
+  .btn-reserva-flotante{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#c6d46b;
+    color:#1f1f1f;
+    font-weight:bold;
+    font-family:inherit;
+    padding:14px 22px;
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:16px;
+    white-space:nowrap;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-reserva-flotante:hover{
+    background:#b3c157;
+    transform:translateY(-2px);
+    color:#1f1f1f;
+  }
+  .btn-reserva-flotante i{
+    font-size:18px;
+  }
+
+  /* Tablets */
+  @media(max-width:768px){
+    .btn-reserva-flotante{
+      bottom:20px;
+      right:20px;
+      padding:12px 18px;
+      font-size:14px;
+    }
+    .btn-reserva-flotante i{
+      font-size:16px;
+    }
+  }
+
+  /* Teléfonos */
+  @media(max-width:480px){
+    .btn-reserva-flotante{
+      bottom:15px;
+      right:15px;
+      padding:10px 14px;
+      font-size:13px;
+      gap:6px;
+    }
+    .btn-reserva-flotante i{
+      font-size:15px;
+    }
+  }
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .spa-footer-container{
@@ -255,6 +312,10 @@ body{ font-family:'Montserrat',sans-serif; display:flex; flex-direction:column; 
     </nav>
 
 </section>
+
+<a href="#" id="btnReserva" class="btn-reserva-flotante">
+  <i class="fab fa-whatsapp"></i> Reserva
+</a>
 
 <footer class="spa-footer">
   <div class="spa-footer-container">
