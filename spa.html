@@ -188,6 +188,63 @@ body{ font-family:'Montserrat',sans-serif; display:flex; flex-direction:column; 
   color:#aaaaaa;
 }
 
+/*Botón flotante de Reserva*/
+  .btn-reserva-flotante{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#c6d46b;
+    color:#1f1f1f;
+    font-weight:bold;
+    font-family:inherit;
+    padding:14px 22px;
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:16px;
+    white-space:nowrap;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-reserva-flotante:hover{
+    background:#b3c157;
+    transform:translateY(-2px);
+    color:#1f1f1f;
+  }
+  .btn-reserva-flotante i{
+    font-size:18px;
+  }
+
+  /* Tablets */
+  @media(max-width:768px){
+    .btn-reserva-flotante{
+      bottom:20px;
+      right:20px;
+      padding:12px 18px;
+      font-size:14px;
+    }
+    .btn-reserva-flotante i{
+      font-size:16px;
+    }
+  }
+
+  /* Teléfonos */
+  @media(max-width:480px){
+    .btn-reserva-flotante{
+      bottom:15px;
+      right:15px;
+      padding:10px 14px;
+      font-size:13px;
+      gap:6px;
+    }
+    .btn-reserva-flotante i{
+      font-size:15px;
+    }
+  }
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .spa-footer-container{
@@ -468,15 +525,13 @@ Valor: ₡113.000 por pareja
 <h3>Spa con Amigas</h3>
 <p>Para grupos de 3 a 5 personas.</p>
 <div class="info-extra">
-Casillero equipado<br>
-Cóctel natural de bienvenida<br>
-Uso de sauna<br>
-Uso de baño de vapor<br>
-Uso de piscina<br>
-Tabla de fiambres para la cantidad de personas<br>
-Botella de vino<br>
+Coctel Natural de Bienvenida<br>
+Circuito spa<br>
+Piscina<br>
 Plato de frutas<br>
-Masaje relajante de 30 minutos (espalda, brazos y cuello)<br><br>
+Botella de vino (cada 3 personas)<br>
+Tabla de fiambres<br>
+Masaje relajante<br><br>
 Valor: ₡39.550 por persona
 </div>
 <button class="ver-mas">Ver más</button>
@@ -692,6 +747,10 @@ Valor: ₡28.250
   </div>
 </section>
 
+<a href="#" id="btnReserva" class="btn-reserva-flotante">
+  <i class="fab fa-whatsapp"></i> Reserva
+</a>
+
 <footer class="spa-footer">
   <div class="spa-footer-container">
     <div class="spa-section">
@@ -735,6 +794,20 @@ Valor: ₡28.250
 </footer>
 
 <script>
+
+/*Boton de reserva*/
+document.getElementById('btnReserva').addEventListener('click', function(e){
+      e.preventDefault();
+      const mensaje =
+  `Nombre: 
+  Fecha de reservación: 
+  Paquete seleccionado: 
+  Número de teléfono: 
+  Correo electrónico: 
+  Identificación: `;
+      const url = "https://wa.me/50688726012?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank");
+    });
 
 /* FILTROS */
 
